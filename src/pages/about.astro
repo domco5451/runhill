@@ -1,5 +1,18 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+	firstname: "Dominik",
+	country: "Slovakia",
+	occupation: "Programator",
+	hobbies: ["programming", "anime",],
+}
+
+const skills = ["HTML", "CSS", "JS", "React", "Astro", "Writing Docs"]
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -8,15 +21,23 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>runhill.sk</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/blog">Blog</a>
-		<h1>This is about me!</h1>
+		<h1>{pageTitle}</h1>
         <h2>What do I mean by that?</h2>
-        <p>This section of a page contains information about me, and my progress with Astro.</p>
+        <p>My name is {identity.firstname} and I am from {identity.country}.</p>
         <p>I`m trying out this new framework, that is based on MPA principle, instead of SPA so wish me luck!</p>
+        {identity.hobbies.length >= 3 ? <p>I have a bunch of hobbies, but I am just gonna name 3:  {identity.hobbies[0]}, {identity.hobbies[1]}, {identity.hobbies[2]}</p> : <p>I have exactly 2 hobbies: {identity.hobbies[0]}, {identity.hobbies[1]}.</p>}
+		<p>My hobbies are: </p>
+		<ul>
+			{skills.map((skill => <li>{skill}</li>))}
+		</ul>
+		{happy && <p>I am happy to be learning Astro!</p>}
+		{finished && <p>I have finished this tutorial!</p>}
+		{goal === 3 ? <p>My goal is to finish this tutorial in 3 days!</p> : <p>My goal is to take my time with this tutorial!</p>}
 	</body>
 </html>
